@@ -15,20 +15,21 @@ from hardware import pump
     update_webpage();
 
 '''
-
+import time
 import RPi.GPIO as GPIO
-from pump import * 
+from hardware.pump import * 
+import hardware.LCD as LCD
 
 # Config Variables
-button_pin_1 = 1
-button_pin_2 = 2
-button_pin_3 = 3
-button_pin_4 = 4
+button_pin_1 = 25
+button_pin_2 = 27
+button_pin_3 = 28
+button_pin_4 = 29
 
-pump_pin_1 = 1
-pump_pin_2 = 2
-pump_pin_3 = 3
-pump_pin_4 = 4
+pump_pin_1 = 21
+pump_pin_2 = 22
+pump_pin_3 = 23
+pump_pin_4 = 24
 
 # Button Setup
 GPIO.setmode(GPIO.BCM)
@@ -59,14 +60,11 @@ GPIO.add_event_detect(button_pin_4, GPIO.FALLING, callback=pump4.turn_off, bounc
 
 
 
-
-
-
 if __name__ == "__main__":
   try:  
     while True:
-      pass 
-  
+      LCD.update_all(pump1.get_liquid_level(), pump2.get_liquid_level(), pump3.get_liquid_level(), pump4.get_liquid_level())
+      time.sleep(2)
   except KeyboardInterrupt:  
     GPIO.cleanup()       # clean up GPIO on CTRL+C exit 
 

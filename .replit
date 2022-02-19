@@ -1,2 +1,2 @@
 language = "bash"
-run = "pip install RPi.GPIO && python3 main.py"
+run = " python3 webapp/app.py"
