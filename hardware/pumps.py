@@ -1,4 +1,4 @@
-from pump import *
+from hardware.pump import *
 from config import *
 
 class Pumps:
