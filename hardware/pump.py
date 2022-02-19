@@ -30,8 +30,9 @@ MAX_LIQUID = MILLIS_TO_LIQUID*30000
 
 def get_time_millis():
   return round(time.time() * 1000)
-class Pump:
 
+
+class Pump:
 
   def __init__(self,pump_gpio,button_gpio):
     # Setup GPIO
@@ -52,7 +53,7 @@ class Pump:
       # only change last_on if the pump wasn't already on
       if not self.is_on:
         self.last_on = time.time()
-          self.is_on = True
+        self.is_on = True
         # set GPIO stuff
         GPIO.output(self.pump_gpio,GPIO.HIGH)
       else:
