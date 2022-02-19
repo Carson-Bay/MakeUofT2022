@@ -22,7 +22,8 @@ def apprun():
   app.run(debug=True, host='0.0.0.0')
 
 if __name__ == '__main__':
-    q = Queue()
+    l_levels = Queue()
+    to_reset = Queu()
     
     webapp = Process(target=apprun, args=())
     webapp.start()

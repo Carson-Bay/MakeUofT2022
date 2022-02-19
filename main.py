@@ -1,4 +1,3 @@
-from hardware import pump
 '''
 4. main.py
     
@@ -19,6 +18,7 @@ import time
 import RPi.GPIO as GPIO
 from hardware.pump import * 
 from hardware.LCD import *
+from multiprocessing import Queue, Process
 
 # Config Variables
 button_pin_1 = 25
