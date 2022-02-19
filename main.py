@@ -21,15 +21,15 @@ from hardware.LCD import *
 from multiprocessing import Queue, Process
 
 # Config Variables
-button_pin_1 = 25
-button_pin_2 = 27
-button_pin_3 = 28
-button_pin_4 = 29
+button_pin_1 = 16
+button_pin_2 = 20
+button_pin_3 = 21
+button_pin_4 = 26
 
-pump_pin_1 = 21
-pump_pin_2 = 22
-pump_pin_3 = 23
-pump_pin_4 = 24
+pump_pin_1 = 5
+pump_pin_2 = 6
+pump_pin_3 = 12
+pump_pin_4 = 13
 
 # Button Setup
 GPIO.setmode(GPIO.BCM)
