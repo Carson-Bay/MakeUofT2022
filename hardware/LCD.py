@@ -31,11 +31,6 @@ lcd = characterlcd.Character_LCD_Mono(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6,
 # wipe LCD screen before we start
 lcd.clear()
 
-# before we start the main loop - detect active network device and ip address
-sleep(2)
-interface = find_interface()
-ip_address = parse_ip()
-
 def update_all(bottle_1, bottle_2, bottle_3, bottle_4):
 
     lcd_line_1 = "B1:%{} B2:%{}".format(str(bottle_1).ljust(3), str(bottle_1).ljust(3))
