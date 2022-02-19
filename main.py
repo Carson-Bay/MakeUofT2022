@@ -39,6 +39,16 @@ GPIO.setup(button_pin_2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(button_pin_3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(button_pin_4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
+GPIO.setup(pump_pin_1, GPIO.OUT)
+GPIO.setup(pump_pin_2, GPIO.OUT)
+GPIO.setup(pump_pin_3, GPIO.OUT)
+GPIO.setup(pump_pin_4, GPIO.OUT)
+
+GPIO.output(pump_pin_1, GPIO.LOW)
+GPIO.output(pump_pin_2, GPIO.LOW)
+GPIO.output(pump_pin_3, GPIO.LOW)
+GPIO.output(pump_pin_4, GPIO.LOW)
+
 # Setup pumps
 pump1 = Pump(pump_pin_1, button_pin_1)
 pump2 = Pump(pump_pin_2, button_pin_2)
