@@ -82,7 +82,12 @@ class Pump:
 
   # return the liquid level as a percentage
   def get_liquid_level(self):
-    return (self.get_time_on()*MILLIS_TO_LIQUID)/MAX_LIQUID * 100
+    level = (self.get_time_on()*MILLIS_TO_LIQUID)/MAX_LIQUID * 100
+    if level > 100:
+      level = 100
+    elif level < 0:
+      level = 0
+    return level.ro
 
   # return liquid usage in millilitres
   def get_liquid_usage(self):
