@@ -1,5 +1,5 @@
 from pump import pump
-import config import *
+from config import *
 
 class Pumps:
 
