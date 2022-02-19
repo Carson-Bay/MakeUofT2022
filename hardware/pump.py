@@ -87,7 +87,7 @@ class Pump:
       level = 100
     elif level < 0:
       level = 0
-    return level.ro
+    return int(level)
 
   # return liquid usage in millilitres
   def get_liquid_usage(self):

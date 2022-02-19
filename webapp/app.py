@@ -41,11 +41,11 @@ def apprun():
 if __name__ == '__main__':
 
     
-    webapp = Process(target=apprun, args=(liquid_levels,to_reset,drink_requests))
+    webapp = Process(target=apprun)
     webapp.start()
 
-    hardware = Process(target=main, args=(liquid_levels,to_reset,drink_requests))
-    hardware.start()
+    # hardware = Process(target=main, args=(liquid_levels,to_reset,drink_requests))
+    # hardware.start()
     
     # while True:
     #   print("HeLLO!!!!!")
