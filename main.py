@@ -18,7 +18,7 @@ from hardware import pump
 import time
 import RPi.GPIO as GPIO
 from hardware.pump import * 
-import hardware.LCD as LCD
+from hardware.LCD import *
 
 # Config Variables
 button_pin_1 = 25
@@ -62,12 +62,15 @@ GPIO.add_event_detect(button_pin_2, GPIO.BOTH, callback=pump2.toggle, bouncetime
 GPIO.add_event_detect(button_pin_3, GPIO.BOTH, callback=pump3.toggle, bouncetime=300)  
 GPIO.add_event_detect(button_pin_4, GPIO.BOTH, callback=pump4.toggle, bouncetime=300)        
 
-if __name__ == "__main__":
+def main():
   try:  
     while True:
-      LCD.update_all(pump1.get_liquid_level(), pump2.get_liquid_level(), pump3.get_liquid_level(), pump4.get_liquid_level())
+      update_all(pump1.get_liquid_level(), pump2.get_liquid_level(), pump3.get_liquid_level(), pump4.get_liquid_level())
       time.sleep(2)
   except KeyboardInterrupt:  
     GPIO.cleanup()       # clean up GPIO on CTRL+C exit 
 
   GPIO.cleanup()           # clean up GPIO on normal exit  
+
+if __name__ == "__main__":
+  main()
