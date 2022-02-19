@@ -62,7 +62,7 @@ GPIO.add_event_detect(button_pin_2, GPIO.BOTH, callback=pump2.toggle, bouncetime
 GPIO.add_event_detect(button_pin_3, GPIO.BOTH, callback=pump3.toggle, bouncetime=300)  
 GPIO.add_event_detect(button_pin_4, GPIO.BOTH, callback=pump4.toggle, bouncetime=300)        
 
-def main():
+def main(liquid_levels=Queue(),to_reset=Queue(),drink_requests=Queue()):
   try:  
     lcd = init_lcd()
     while True:
