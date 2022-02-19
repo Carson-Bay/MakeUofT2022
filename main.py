@@ -38,17 +38,24 @@ GPIO.setup(button_pin_2, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(button_pin_3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(button_pin_4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
+# Setup pumps
+pump1 = Pump(pump_pin_1)
+pump2 = Pump(pump_pin_2)
+pump3 = Pump(pump_pin_3)
+pump4 = Pump(pump_pin_4)
+
+
 # Callbacks
 '''ON'''
-GPIO.add_event_detect(button_pin_1, GPIO.RISING, callback=my_callback, bouncetime=300)
-GPIO.add_event_detect(button_pin_2, GPIO.RISING, callback=my_callback, bouncetime=300)  
-GPIO.add_event_detect(button_pin_3, GPIO.RISING, callback=my_callback, bouncetime=300)  
-GPIO.add_event_detect(button_pin_4, GPIO.RISING, callback=my_callback, bouncetime=300)    
+GPIO.add_event_detect(button_pin_1, GPIO.RISING, callback=pump1.turn_on, bouncetime=300)
+GPIO.add_event_detect(button_pin_2, GPIO.RISING, callback=pump2.turn_on, bouncetime=300)  
+GPIO.add_event_detect(button_pin_3, GPIO.RISING, callback=pump3.turn_on, bouncetime=300)  
+GPIO.add_event_detect(button_pin_4, GPIO.RISING, callback=pump4.turn_on, bouncetime=300)    
 '''OFF'''
-GPIO.add_event_detect(button_pin_1, GPIO.FALLING, callback=my_callback, bouncetime=300)
-GPIO.add_event_detect(button_pin_2, GPIO.FALLING, callback=my_callback, bouncetime=300)  
-GPIO.add_event_detect(button_pin_3, GPIO.FALLING, callback=my_callback, bouncetime=300)  
-GPIO.add_event_detect(button_pin_4, GPIO.FALLING, callback=my_callback, bouncetime=300)    
+GPIO.add_event_detect(button_pin_1, GPIO.FALLING, callback=pump1.turn_off, bouncetime=300)
+GPIO.add_event_detect(button_pin_2, GPIO.FALLING, callback=pump2.turn_off, bouncetime=300)  
+GPIO.add_event_detect(button_pin_3, GPIO.FALLING, callback=pump3.turn_off, bouncetime=300)  
+GPIO.add_event_detect(button_pin_4, GPIO.FALLING, callback=pump4.turn_off, bouncetime=300)    
 
 
 
