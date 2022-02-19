@@ -64,8 +64,9 @@ GPIO.add_event_detect(button_pin_4, GPIO.BOTH, callback=pump4.toggle, bouncetime
 
 def main():
   try:  
+    lcd = init_lcd()
     while True:
-      update_all(pump1.get_liquid_level(), pump2.get_liquid_level(), pump3.get_liquid_level(), pump4.get_liquid_level())
+      update_all(lcd, pump1.get_liquid_level(), pump2.get_liquid_level(), pump3.get_liquid_level(), pump4.get_liquid_level())
       time.sleep(2)
   except KeyboardInterrupt:  
     GPIO.cleanup()       # clean up GPIO on CTRL+C exit 
