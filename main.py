@@ -40,10 +40,10 @@ GPIO.setup(button_pin_3, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 GPIO.setup(button_pin_4, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Setup pumps
-pump1 = Pump(pump_pin_1)
-pump2 = Pump(pump_pin_2)
-pump3 = Pump(pump_pin_3)
-pump4 = Pump(pump_pin_4)
+pump1 = Pump(pump_pin_1, button_pin_1)
+pump2 = Pump(pump_pin_2, button_pin_2)
+pump3 = Pump(pump_pin_3, button_pin_3)
+pump4 = Pump(pump_pin_4, button_pin_4)
 
 
 # Callbacks
