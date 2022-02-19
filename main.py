@@ -18,6 +18,7 @@ import time
 import RPi.GPIO as GPIO
 from hardware.pump import * 
 from hardware.LCD import *
+from hardware.pumps import *
 from multiprocessing import Queue, Process
 from config import *
 
@@ -34,10 +35,10 @@ GPIO.setup(pump_pin_2, GPIO.OUT)
 GPIO.setup(pump_pin_3, GPIO.OUT)
 GPIO.setup(pump_pin_4, GPIO.OUT)
 
-GPIO.output(pump_pin_1, GPIO.LOW)
-GPIO.output(pump_pin_2, GPIO.LOW)
-GPIO.output(pump_pin_3, GPIO.LOW)
-GPIO.output(pump_pin_4, GPIO.LOW)
+GPIO.output(pump_pin_1, GPIO.HIGH)
+GPIO.output(pump_pin_2, GPIO.HIGH)
+GPIO.output(pump_pin_3, GPIO.HIGH)
+GPIO.output(pump_pin_4, GPIO.HIGH)
 
 # Setup pumps
 pump1 = Pump(pump_pin_1, button_pin_1)
