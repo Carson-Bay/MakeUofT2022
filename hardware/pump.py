@@ -27,6 +27,9 @@ MAX_LIQUID = MILLIS_TO_LIQUID*30000
         4. liquid_level_reset()
 
 '''
+
+def get_time_millis():
+  return round(time.time() * 1000)
 class Pump:
 
 
@@ -36,8 +39,8 @@ class Pump:
 
     self.pump_gpio = pump_gpio
     # All time values in milliseconds
-    self.last_on = time.time()
-    self.last_off = time.time()
+    self.last_on = get_time_millis()
+    self.last_off = get_time_millis()
     self.is_on = False
     self.time_on = 0
     # liquid level in percentages
@@ -67,7 +70,7 @@ class Pump:
 
   def get_time_on(self):
     if self.is_on:
-      timeon = self.time_on += (time.time() - self.last_on)
+      timeon = self.time_on += (get_time_millis() - self.last_on)
     else:
       timeon = self.time_on
 
