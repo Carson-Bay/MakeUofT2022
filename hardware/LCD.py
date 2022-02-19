@@ -39,3 +39,7 @@ def update_all(bottle_1, bottle_2, bottle_3, bottle_4):
 
     # combine both lines into one update to the display
     lcd.message = lcd_line_1 + lcd_line_2
+
+if __name__ == "__main__":
+  update_all(19, 28, 37, 46)
+  
