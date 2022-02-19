@@ -45,7 +45,7 @@ class Pump:
     # liquid level in percentages
     self.liquid_level = 100
 
-  def toggle(self):
+  def toggle(self, channel):
       if GPIO.input(self.button_gpio):
         # only change last_on if the pump wasn't already on
         if not self.is_on:
