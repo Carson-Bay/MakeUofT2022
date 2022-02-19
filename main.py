@@ -47,18 +47,10 @@ pump4 = Pump(pump_pin_4)
 
 
 # Callbacks
-'''ON'''
-GPIO.add_event_detect(button_pin_1, GPIO.RISING, callback=pump1.turn_on, bouncetime=300)
-GPIO.add_event_detect(button_pin_2, GPIO.RISING, callback=pump2.turn_on, bouncetime=300)  
-GPIO.add_event_detect(button_pin_3, GPIO.RISING, callback=pump3.turn_on, bouncetime=300)  
-GPIO.add_event_detect(button_pin_4, GPIO.RISING, callback=pump4.turn_on, bouncetime=300)    
-'''OFF'''
-GPIO.add_event_detect(button_pin_1, GPIO.FALLING, callback=pump1.turn_off, bouncetime=300)
-GPIO.add_event_detect(button_pin_2, GPIO.FALLING, callback=pump2.turn_off, bouncetime=300)  
-GPIO.add_event_detect(button_pin_3, GPIO.FALLING, callback=pump3.turn_off, bouncetime=300)  
-GPIO.add_event_detect(button_pin_4, GPIO.FALLING, callback=pump4.turn_off, bouncetime=300)    
-
-
+GPIO.add_event_detect(button_pin_1, GPIO.BOTH, callback=pump1.toggle, bouncetime=300)
+GPIO.add_event_detect(button_pin_2, GPIO.BOTH, callback=pump2.toggle, bouncetime=300)  
+GPIO.add_event_detect(button_pin_3, GPIO.BOTH, callback=pump3.toggle, bouncetime=300)  
+GPIO.add_event_detect(button_pin_4, GPIO.BOTH, callback=pump4.toggle, bouncetime=300)        
 
 if __name__ == "__main__":
   try:  
