@@ -1,3 +1,12 @@
+import time
+import RPi.GPIO as GPIO
+
+GPIO.setmode(GPIO.BCM)
+# time in milliseconds to liquid level via multiplication
+MILLIS_TO_LIQUID = 150
+# max millis to liquid; assuming after 30 seconds it is done pumping
+MAX_LIQUID = MILLIS_TO_LIQUID*30000
+
 '''
 2. pump.py
     1. pump_class
@@ -18,3 +27,58 @@
         4. liquid_level_reset()
 
 '''
+class Pump:
+
+
+  def __init__(self,pump_gpio):
+    # Setup GPIO
+
+
+    self.pump_gpio = pump_gpio
+    # All time values in milliseconds
+    self.last_on = time.time()
+    self.last_off = time.time()
+    self.is_on = False
+    self.time_on = 0
+    # liquid level in percentages
+    self.liquid_level = 100
+
+  def turn_on(self):
+    # only change last_on if the pump wasn't already on
+    if not self.is_on:
+      self.last_on = time.time()
+      self.is_on = True
+      GPIO.output(self.pump_gpio,GPIO.HIGH)
+      # set GPIO stuff
+    else:
+      print("Pump GPIO",self.pump_gpio, "turn_on called with pump already on.")
+  
+  def turn_off(self):
+     # only change last_off if the pump wasn't already on
+    if self.is_on:
+      self.last_off = time.time()
+      self.is_off = False
+      # set GPIO stuff
+      GPIO.output(self.pump_gpio,GPIO.LOW)
+      # when the pump is turned off, update the time_on
+      self.time_on += (self.last_off - self.last_on)
+    else:
+      print("Pump GPIO",self.pump_gpio, "turn_off called with pump already off.")
+
+  def get_time_on(self):
+    if self.is_on:
+      timeon = self.time_on += (time.time() - self.last_on)
+    else:
+      timeon = self.time_on
+
+    print("Pump GPIO",self.pump_gpio,"on time:",timeon)
+    return timeon
+
+  # return the liquid level as a percentage
+  def get_liquid_level(self):
+    return (self.get_time_on()*MILLIS_TO_LIQUID)/MAX_LIQUID * 100
+
+  def get_liquid_usage(self):
+    return self.get_time_on*MILLIS_TO_LIQUID
+
+    
