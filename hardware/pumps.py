@@ -14,6 +14,9 @@ class Pumps:
 
   def toggle_pumps (self, channel):
     other_pump_on = False
+    
+    
+    
 
     for i in self.pump_list:
       if self.pump_list[i].is_on == 1:
