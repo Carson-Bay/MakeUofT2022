@@ -47,29 +47,29 @@ class Pump:
 
   def toggle(self, channel):
     time.sleep(0.05)
-      if GPIO.input(self.button_gpio) == 1:
-        print("Rising")
-        # only change last_on if the pump wasn't already on
-        if not self.is_on:
-          self.last_on = time.time()
+    if GPIO.input(self.button_gpio) == 1:
+      print("Rising sdf")
+      # only change last_on if the pump wasn't already on
+      if not self.is_on:
+        self.last_on = time.time()
           self.is_on = True
-          # set GPIO stuff
-          GPIO.output(self.pump_gpio,GPIO.HIGH)
-        else:
-          print("Pump GPIO",self.pump_gpio, "turn_on called with pump already on.")
-
+        # set GPIO stuff
+        GPIO.output(self.pump_gpio,GPIO.HIGH)
       else:
-        print("Falling")
-        # only change last_off if the pump wasn't already on
-        if self.is_on:
-          self.last_off = time.time()
-          self.is_off = False
-          # set GPIO stuff
-          GPIO.output(self.pump_gpio,GPIO.LOW)
-          # when the pump is turned off, update the time_on
-          self.time_on += (self.last_off - self.last_on)
-        else:
-          print("Pump GPIO",self.pump_gpio, "turn_off called with pump already off.")
+        print("Pump GPIO",self.pump_gpio, "turn_on called with pump already on.")
+
+    else:
+      print("Falling")
+      # only change last_off if the pump wasn't already on
+      if self.is_on:
+        self.last_off = time.time()
+        self.is_off = False
+        # set GPIO stuff
+        GPIO.output(self.pump_gpio,GPIO.LOW)
+        # when the pump is turned off, update the time_on
+        self.time_on += (self.last_off - self.last_on)
+      else:
+        print("Pump GPIO",self.pump_gpio, "turn_off called with pump already off.")
   
   def get_time_on(self):
     if self.is_on:
