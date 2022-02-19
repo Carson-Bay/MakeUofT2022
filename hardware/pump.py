@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 # time in milliseconds to liquid level via multiplication
-MILLIS_TO_LIQUID = 150
+MILLIS_TO_LIQUID = 15000000
 # max millis to liquid; assuming after 30 seconds it is done pumping
 MAX_LIQUID = MILLIS_TO_LIQUID*30000
 
