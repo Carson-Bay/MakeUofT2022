@@ -17,19 +17,18 @@ sys.path.insert(0, parentdir)
 
 # import main
 
-# def f(q):
-#   count = 0
-#   while True:
-#     count+=1
-#     q.put([count])
-#     sleep(1)
-
 app = Flask(__name__)
 
 @app.route('/')
 def index():
     to_reset.put(["Carson"])
-    return render_template('index.html')
+    result = []
+    if liquid_levels.empty():
+      result = ()
+    else:
+      for ind,num in enumerate(liquid_levels.get()):
+        result[str(ind+1)] = num
+    return render_template('index.html',result=result)
 
 @app.route('/cakes')
 def cakes():

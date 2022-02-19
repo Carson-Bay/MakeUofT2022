@@ -55,6 +55,8 @@ pump2 = Pump(pump_pin_2, button_pin_2)
 pump3 = Pump(pump_pin_3, button_pin_3)
 pump4 = Pump(pump_pin_4, button_pin_4)
 
+pumps = Pumps([pump1, pump2, pump3, pump4])
+
 
 # Callbacks
 GPIO.add_event_detect(button_pin_1, GPIO.BOTH, callback=pump1.toggle, bouncetime=300)

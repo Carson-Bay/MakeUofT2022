@@ -3,9 +3,9 @@ import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BCM)
 # time in milliseconds to liquid level via multiplication
-MILLIS_TO_LIQUID = 15000000
+MILLIS_TO_LIQUID = 1
 # max millis to liquid; assuming after 30 seconds it is done pumping
-MAX_LIQUID = MILLIS_TO_LIQUID*30000
+MAX_LIQUID = MILLIS_TO_LIQUID*20
 
 '''
 2. pump.py
@@ -28,10 +28,6 @@ MAX_LIQUID = MILLIS_TO_LIQUID*30000
 
 '''
 
-def get_time_millis():
-  return round(time.time() * 1000)
-
-
 class Pump:
 
   def __init__(self,pump_gpio,button_gpio):
@@ -39,8 +35,8 @@ class Pump:
     self.pump_gpio = pump_gpio
     self.button_gpio = button_gpio
     # All time values in milliseconds
-    self.last_on = get_time_millis()
-    self.last_off = get_time_millis()
+    self.last_on = time.perf_counter()
+    self.last_off = time.perf_counter()
     self.is_on = False
     self.time_on = 0
     # liquid level in percentages
@@ -49,10 +45,10 @@ class Pump:
   def toggle(self, channel):
     time.sleep(0.01)
     if GPIO.input(self.button_gpio) == 1:
-      print("Rising sdf")
+      print("Rising")
       # only change last_on if the pump wasn't already on
       if not self.is_on:
-        self.last_on = time.time()
+        self.last_on = time.perf_counter()
         self.is_on = True
         # set GPIO stuff
         GPIO.output(self.pump_gpio,GPIO.HIGH)
@@ -63,7 +59,7 @@ class Pump:
       print("Falling")
       # only change last_off if the pump wasn't already on
       if self.is_on:
-        self.last_off = time.time()
+        self.last_off = time.perf_counter()
         self.is_on = False
         # set GPIO stuff
         GPIO.output(self.pump_gpio,GPIO.LOW)
@@ -74,7 +70,7 @@ class Pump:
   
   def get_time_on(self):
     if self.is_on:
-      timeon = self.time_on + (get_time_millis() - self.last_on)
+      timeon = self.time_on + (time.perf_counter() - self.last_on)
     else:
       timeon = self.time_on
 
@@ -82,7 +78,7 @@ class Pump:
 
   # return the liquid level as a percentage
   def get_liquid_level(self):
-    level = (self.get_time_on()*MILLIS_TO_LIQUID)/MAX_LIQUID * 100
+    level = 100 - (self.get_time_on()*MILLIS_TO_LIQUID)/MAX_LIQUID * 100
     if level > 100:
       level = 100
     elif level < 0:

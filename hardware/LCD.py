@@ -34,7 +34,8 @@ def init_lcd():
   return lcd
 
 def update_all(lcd, bottle_1, bottle_2, bottle_3, bottle_4):
-
+    lcd.clear()
+    
     lcd_line_1 = "B1:%{} B2:%{}\n".format(str(bottle_1).ljust(3), str(bottle_1).ljust(3))
 
     lcd_line_2 = "B3:%{} B4:%{}".format(str(bottle_3).ljust(3), str(bottle_4).ljust(3))
