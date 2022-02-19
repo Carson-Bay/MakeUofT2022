@@ -37,8 +37,8 @@ class Pump:
     # Setup GPIO
     self.pump_gpio = pump_gpio
     self.button_gpio = button_gpio
-    GPIO.setup(self.pump_pin, GPIO.OUT)
-    GPIO.output(self.pump_pin, GPIO.LOW)
+    GPIO.setup(self.pump_gpio, GPIO.OUT)
+    GPIO.output(self.pump_gpio, GPIO.LOW)
     # All time values in milliseconds
     self.last_on = get_time_millis()
     self.last_off = get_time_millis()
