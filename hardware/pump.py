@@ -42,7 +42,7 @@ class Pump:
     # liquid level in percentages
     self.liquid_level = 100
 
-  def toggle(self, channel):
+  def toggle(self):
     time.sleep(0.01)
     if GPIO.input(self.button_gpio) == 1:
       print("Rising")

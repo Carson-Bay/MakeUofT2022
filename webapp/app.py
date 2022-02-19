@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from multiprocessing import Process, Queue
 # to import from parent directory
 import os
@@ -30,9 +30,13 @@ def index():
        result.append((ind+1,num))
     return render_template('index.html',result=result)
 
-@app.route('/cakes')
-def cakes():
-    return 'Yummy cakes!'
+
+@app.route('/handle_data', methods=['POST'])
+def handle_data():
+    name = request.form['requester']
+    print(name, "received")
+    drink_requests.put(name)
+    return index()
 
 def apprun():
   app.run(debug=True, host='0.0.0.0')

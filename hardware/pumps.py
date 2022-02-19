@@ -15,14 +15,11 @@ class Pumps:
   def toggle_pumps (self, channel):
     other_pump_on = False
     
+    pump_index = self.dict[str(channel)]
     
-    
-
     for i in self.pump_list:
       if self.pump_list[i].is_on == 1:
         other_pump_on = True
 
     if not other_pump_on:
-      self.pump_list[pump_num].toggle
-
-  
+      self.pump_list[pump_index].toggle()

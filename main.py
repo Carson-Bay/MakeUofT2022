@@ -45,14 +45,14 @@ pump2 = Pump(pump_pin_2, button_pin_2)
 pump3 = Pump(pump_pin_3, button_pin_3)
 pump4 = Pump(pump_pin_4, button_pin_4)
 
-#pumps = Pumps([pump1, pump2, pump3, pump4])
+pumps = Pumps([pump1, pump2, pump3, pump4])
 
 
 # Callbacks
-GPIO.add_event_detect(button_pin_1, GPIO.BOTH, callback=pump1.toggle, bouncetime=300)
-GPIO.add_event_detect(button_pin_2, GPIO.BOTH, callback=pump2.toggle, bouncetime=300)  
-GPIO.add_event_detect(button_pin_3, GPIO.BOTH, callback=pump3.toggle, bouncetime=300)  
-GPIO.add_event_detect(button_pin_4, GPIO.BOTH, callback=pump4.toggle, bouncetime=300)        
+GPIO.add_event_detect(button_pin_1, GPIO.BOTH, callback=pumps.toggle_pumps, bouncetime=300)
+GPIO.add_event_detect(button_pin_2, GPIO.BOTH, callback=pumps.toggle_pumps, bouncetime=300)  
+GPIO.add_event_detect(button_pin_3, GPIO.BOTH, callback=pumps.toggle_pumps, bouncetime=300)  
+GPIO.add_event_detect(button_pin_4, GPIO.BOTH, callback=pumps.toggle_pumps, bouncetime=300)        
 
 def main(liquid_levels=Queue(),to_reset=Queue(),drink_requests=Queue()):
   resets = []
