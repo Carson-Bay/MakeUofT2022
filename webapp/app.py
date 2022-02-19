@@ -24,10 +24,10 @@ def index():
     to_reset.put(["Carson"])
     result = []
     if liquid_levels.empty():
-      result = ()
+      result = [(1,0),(2,0),(3,0),(4,0)]
     else:
       for ind,num in enumerate(liquid_levels.get()):
-        result[str(ind+1)] = num
+       result.append((ind+1,num))
     return render_template('index.html',result=result)
 
 @app.route('/cakes')

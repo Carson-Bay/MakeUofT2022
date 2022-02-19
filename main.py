@@ -19,17 +19,7 @@ import RPi.GPIO as GPIO
 from hardware.pump import * 
 from hardware.LCD import *
 from multiprocessing import Queue, Process
-
-# Config Variables
-button_pin_1 = 16
-button_pin_2 = 20
-button_pin_3 = 21
-button_pin_4 = 26
-
-pump_pin_1 = 5
-pump_pin_2 = 6
-pump_pin_3 = 12
-pump_pin_4 = 13
+from config import *
 
 # Button Setup
 GPIO.setmode(GPIO.BCM)
@@ -55,7 +45,7 @@ pump2 = Pump(pump_pin_2, button_pin_2)
 pump3 = Pump(pump_pin_3, button_pin_3)
 pump4 = Pump(pump_pin_4, button_pin_4)
 
-pumps = Pumps([pump1, pump2, pump3, pump4])
+#pumps = Pumps([pump1, pump2, pump3, pump4])
 
 
 # Callbacks

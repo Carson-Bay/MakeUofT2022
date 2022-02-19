@@ -3,13 +3,12 @@
 <link rel="stylesheet" href='static/style.css' />
 </head>
 <body>
-<h1>My website</h1>
-{% for val in result %}
-<p>Pump  {{value}}</p>
+<h1>Drinkmaster</h1>
+<h3>Liquid Levels</h3>
+{% for key,val in result %}
+<p>Pump {{key}} : {{val}}</p>
 {% endfor %}
-<input type="submit" name="submit_button" value="Do Something">
-<input type="submit" name="submit_button" value="Do Something Else">
-<input type="submit" name="submit_button" value="Do Something">
-<input type="submit" name="submit_button" value="Do Something Else">
+<input type="text" name="name_input" placeholder="Your Name">
+<input type="submit" name="submit" value="Submit">
 </body>
 </html>
