@@ -67,6 +67,10 @@ def main(liquid_levels=Queue(),to_reset=Queue(),drink_requests=Queue()):
     lcd = init_lcd()
     while True:
       update_all(lcd, pump1.get_liquid_level(), pump2.get_liquid_level(), pump3.get_liquid_level(), pump4.get_liquid_level())
+      l_levels = [pump1.get_liquid_level(), pump2.get_liquid_level(), pump3.get_liquid_level(), pump4.get_liquid_level()]
+      liquid_levels.put(l_levels)
+      resets = []
+      resets = to_reset.get()
       time.sleep(2)
   except KeyboardInterrupt:  
     GPIO.cleanup()       # clean up GPIO on CTRL+C exit 
