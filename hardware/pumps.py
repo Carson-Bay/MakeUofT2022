@@ -1,4 +1,4 @@
-from pump import pump
+from pump import *
 from config import *
 
 class Pumps:
