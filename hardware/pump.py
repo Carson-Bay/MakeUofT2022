@@ -70,7 +70,7 @@ class Pump:
 
   def get_time_on(self):
     if self.is_on:
-      timeon = self.time_on += (get_time_millis() - self.last_on)
+      timeon = self.time_on + (get_time_millis() - self.last_on)
     else:
       timeon = self.time_on
 
