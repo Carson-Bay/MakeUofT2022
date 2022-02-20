@@ -45,5 +45,6 @@ def update_all(lcd, bottle_1, bottle_2, bottle_3, bottle_4):
 
 if __name__ == "__main__":
   lcd = init_lcd()
-
-  update_all(lcd, 19, 28, 37, 46)
+  while True:
+    update_all(lcd, 19, 28, 37, 46)
+    time.sleep(1)
