@@ -34,8 +34,8 @@ class Pumps:
 
     is_pump_already_on = False
     
-    for p in self.pump_list):
-      
+    for p in self.pump_list:
+  
       p.toggle()
 
       if is_pump_already_on and p.is_on:
