@@ -32,4 +32,4 @@ class Pumps:
 
   def update():
     for i in range(len(self.pump_list)):
-      if GPIO.input(pump_list[i].button_gpio)
+      if GPIO.input(pump_list[i].button_gpio) == 0 && 
