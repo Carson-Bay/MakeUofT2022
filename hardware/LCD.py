@@ -44,4 +44,6 @@ def update_all(lcd, bottle_1, bottle_2, bottle_3, bottle_4):
     lcd.message = lcd_line_1 + lcd_line_2
 
 if __name__ == "__main__":
-  update_all(19, 28, 37, 46)
+  lcd = init_lcd()
+
+  update_all(lcd, 19, 28, 37, 46)
