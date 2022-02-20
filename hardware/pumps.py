@@ -17,7 +17,7 @@ class Pumps:
     
     pump_index = self.pump_my_dict[str(channel)]
     
-    for i in len(self.pump_list):
+    for i in range(len(self.pump_list)):
       if self.pump_list[i].is_on == 1:
         other_pump_on = True
 
