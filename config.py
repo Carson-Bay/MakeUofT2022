@@ -1,6 +1,6 @@
 # Config Variables
 button_pin_1 = 19
-button_pin_2 = 16
+button_pin_2 = 20
 button_pin_3 = 21
 button_pin_4 = 26
 
