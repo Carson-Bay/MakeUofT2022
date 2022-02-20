@@ -22,7 +22,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    to_reset.put(["Carson"])
     result = []
     if liquid_levels.empty():
       result = [(1,75),(2,75),(3,75),(4,75)]
