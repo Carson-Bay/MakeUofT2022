@@ -7,14 +7,14 @@
 	<meta http-equiv="refresh" content="3">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>The Drinkmaster</title>
+	<title>DrinkMaster</title>
 </head>
 
 <body class="text-center px-4 sticky" style="overflow-y: scroll">
 	<div class="container-fluid px-4">
 		<form class="form-signin" action="{{ url_for('reset_button') }}"  method="post">
 			<!--  <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
-			<h1 class="h1 mb-4 mt-5 text-white font-weight-bold">The Drinkmaster</h1>
+			<h1 class="h1 mb-4 mt-5 text-white font-weight-bold">DrinkMaster</h1>
 
       			<h3 class="mb-4 text-white">Pump Liquid Levels</h3>
 			{% for key,val in result %}
