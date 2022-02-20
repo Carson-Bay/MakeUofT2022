@@ -52,7 +52,7 @@ class Pump:
         # set GPIO stuff
         GPIO.output(self.pump_gpio,GPIO.LOW)
       else:
-        print("Pump GPIO",self.pump_gpio, "turn_on called with pump already on.")
+        p
 
     else:
       print("Falling")

@@ -72,7 +72,7 @@ def main(liquid_levels=Queue(),to_reset=Queue(),drink_requests=Queue()):
         resets = to_reset.get()
         for i in resets:
           print("MUST RESET",i)
-      time.sleep(0.5)
+      time.sleep(0.01)
   except KeyboardInterrupt:  
     GPIO.cleanup()       # clean up GPIO on CTRL+C exit 
 
