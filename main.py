@@ -61,8 +61,12 @@ def main(liquid_levels=Queue(),to_reset=Queue(),drink_requests=Queue()):
     lcd = init_lcd()
     while True:
       update_all(lcd, pump1.get_liquid_level(), pump2.get_liquid_level(), pump3.get_liquid_level(), pump4.get_liquid_level())
-      l_levels = [pump1.get_liquid_level(), pump2.get_liquid_level(), pump3.get_liquid_level(), pump4.get_liquid_level()]
-      liquid_levels.put(l_levels)
+
+      # only add a liquid level to the queue if it has deteriorated less than 2
+      if len(liquid_levels) < 2:
+        l_levels = [pump1.get_liquid_level(), pump2.get_liquid_level(), pump3.get_liquid_level(), pump4.get_liquid_level()]
+        liquid_levels.put(l_levels)
+      
       if not to_reset.empty():
         resets = to_reset.get()
         for i in resets:

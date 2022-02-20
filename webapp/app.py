@@ -29,6 +29,9 @@ def index():
     else:
       for ind,num in enumerate(liquid_levels.get()):
        result.append((ind+1,num))
+      # never have an empty queue; if no new data has come in, then repeat old data 
+      if liquid_levels.empty():
+        liquid_levels.put(result)
     return render_template('index.html',result=result)
 
 
