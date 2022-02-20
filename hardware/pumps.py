@@ -1,5 +1,6 @@
 from hardware.pump import *
 from config import *
+import RPi.GPIO as GPIO
 
 class Pumps:
 
@@ -28,3 +29,7 @@ class Pumps:
 
     if not other_pump_on:
       self.pump_list[pump_index].toggle()
+
+  def update():
+    for i in range(len(self.pump_list)):
+      if GPIO.input(pump_list[i].button_gpio)

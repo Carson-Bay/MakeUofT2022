@@ -50,8 +50,8 @@ if __name__ == '__main__':
     webapp = Process(target=apprun)
     webapp.start()
 
-    # hardware = Process(target=main, args=(liquid_levels,to_reset,drink_requests))
-    # hardware.start()
+    hardware = Process(target=main, args=(liquid_levels,to_reset,drink_requests))
+    hardware.start()
     
     # while True:
     #   print("HeLLO!!!!!")
