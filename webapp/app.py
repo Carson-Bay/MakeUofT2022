@@ -67,7 +67,9 @@ def handle_data():
     print(name, "received")
     if name not in drink_requests:
       drink_requests.append(name)
-  return request_sent()
+    return request_sent()
+  else:
+    return index()
 
 
 @app.route('/reset_button', methods=['POST','GET'])

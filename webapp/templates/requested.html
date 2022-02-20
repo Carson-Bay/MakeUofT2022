@@ -1,16 +1,16 @@
-<html>
+<html style="overflow-y: scroll">
 
 <head>
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	 crossorigin="anonymous">
 	<!-- <link rel="stylesheet" href='static/style.css' /> -->
-	<meta http-equiv="refresh" content="15">
+	<meta http-equiv="refresh" content="3">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>The Drinkmaster</title>
 </head>
 
-<body class="text-center px-4 sticky" style="overflow-y: hidden">
+<body class="text-center px-4 sticky" style="overflow-y: scroll">
 	<div class="container-fluid px-4">
 		<form class="form-signin" action="{{ url_for('reset_button') }}"  method="post">
 			<!--  <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
@@ -54,23 +54,6 @@
       {% endfor %}
 </form>
 
-</div>
-    
-      <div class="bubbles">
-      <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-    <div class="bubble"></div>
-     <div class="bubble"></div>
-    <div class="bubble"></div>
-    
-  </div>
   
 <!--
 <h1>Drinkmaster</h1>
@@ -91,6 +74,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>
+<footer></div>
+    
+      <div class="bubbles">
+      <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+    <div class="bubble"></div>
+     <div class="bubble"></div>
+    <div class="bubble"></div>
+    
+  </div></footer>
     <style>
         .row {
               display:flex;
@@ -102,15 +102,25 @@
         
         body,html{
   width:100%;
-  height: 100%;
+  min-height: 100%;
 }
 body{
   margin:0;
   padding:0;
-  background:linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(105,208,255,1) 39%);
+  background:linear-gradient(0deg, rgba(9,9,121,1) 0%, rgba(105,208,255,1) 70%);
 }
+
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red
+::-webkit-scrollbar-thumb {
+    background: #FF0000;
+} */
 .bubbles{
-  position:absolute;
+  position:relative;
   width:100%;
   height: 100%;
   z-index:-1;
@@ -132,55 +142,55 @@ body{
   width:40px;
   height:40px;
   left:10%;
-  animation-duration:8s;
+  animation-duration:4s;
 }
 .bubble:nth-child(2){
   width:20px;
   height:20px;
   left:20%;
-  animation-duration:5s;
+  animation-duration:2s;
   animation-delay:1s;
 }
 .bubble:nth-child(3){
   width:50px;
   height:50px;
   left:35%;
-  animation-duration:7s;
+  animation-duration:4s;
   animation-delay:2s;
 }
 .bubble:nth-child(4){
   width:80px;
   height:80px;
   left:50%;
-  animation-duration:11s;
+  animation-duration:4s;
   animation-delay:0s;
 }
 .bubble:nth-child(5){
   width:35px;
   height:35px;
   left:55%;
-  animation-duration:6s;
+  animation-duration:1s;
   animation-delay:1s;
 }
 .bubble:nth-child(6){
   width:45px;
   height:45px;
   left:65%;
-  animation-duration:8s;
+  animation-duration:5s;
   animation-delay:3s;
 }
 .bubble:nth-child(7){
   width:90px;
   height:90px;
   left:70%;
-  animation-duration:12s;
+  animation-duration:6s;
   animation-delay:2s;
 }
 .bubble:nth-child(8){
   width:25px;
   height:25px;
   left:80%;
-  animation-duration:6s;
+  animation-duration:5s;
   animation-delay:2s;
 }
 .bubble:nth-child(9){
