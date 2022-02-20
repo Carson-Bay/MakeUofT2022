@@ -28,7 +28,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="col-1">
+				<div class="col-1 ">
 					<!-- <button type="submit" name="reset-button" class=" btn btn-light " value="{{  key }}">Reset</button> -->
 
                 </div>
@@ -37,12 +37,8 @@
 {% endfor %}
 </form>
   <!-- <div class="progress-bar" role="progressbar" style="width: {{50}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
-  <form action="{{ url_for('handle_data') }}"  method="post">
-  <h5 class="mt-3 text-center mb-2 text-white">Request a Drink</h5>
-  <label for="inputEmail" class="sr-only">Email address</label>
-  <input type="text" id="inputEmail" name="requester" class="form-control mb-2" placeholder="Name" required="" autofocus="">
-
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Submit</button>
+  <form >
+  <h5 class="mt-3 text-center mb-2 text-white">Drink Requested!</h5>
 </form>
 
 </div>

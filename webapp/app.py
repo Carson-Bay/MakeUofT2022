@@ -9,7 +9,7 @@ import threading
 
 liquid_levels = Queue()
 to_reset = Queue()
-drink_requests = Queue()
+drink_requests = []
 
 
 currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe())))
@@ -33,20 +33,58 @@ def index():
         liquid_levels.put(result)
     return render_template('index2.html',result=result)
 
-@app.route('/handle_data', methods=['POST'])
+@app.route('/requested')
+def requested():
+    result = []
+    if liquid_levels.empty():
+      result = [(1,75),(2,75),(3,75),(4,75)]
+    else:
+      for ind,num in enumerate(liquid_levels.get()):
+       result.append((ind+1,num))
+      # never have an empty queue; if no new data has come in, then repeat old data 
+      if liquid_levels.empty():
+        liquid_levels.put(result)
+    return render_template('requested.html',names=drink_requests, result=result)
+
+@app.route('/request_sent')
+def request_sent():
+    result = []
+    if liquid_levels.empty():
+      result = [(1,75),(2,75),(3,75),(4,75)]
+    else:
+      for ind,num in enumerate(liquid_levels.get()):
+       result.append((ind+1,num))
+      # never have an empty queue; if no new data has come in, then repeat old data 
+      if liquid_levels.empty():
+        liquid_levels.put(result)
+    return render_template('request_sent.html',result=result)
+
+@app.route('/handle_data', methods=['POST','GET'])
 def handle_data():
+  if request.method == 'POST':
     name = request.form['requester']
     print(request.form)
     print(name, "received")
-    drink_requests.put(name)
-    return index()
+    if name not in drink_requests:
+      drink_requests.append(name)
+  return request_sent()
 
-@app.route('/reset_button', methods=['POST'])
+
+@app.route('/reset_button', methods=['POST','GET'])
 def reset_button():
+  if request.method == 'POST':
     pump_to_reset = request.form['reset-button']
     to_reset.put(pump_to_reset)
     print("RESET BUTTON", pump_to_reset)
-    return index()
+  return requested()
+
+@app.route('/reset_drinks', methods=['POST','GET'])
+def reset_drinks():
+  if request.method == 'POST':
+    name = request.form['remove-name']
+    if name in drink_requests:
+      drink_requests.remove(name)
+  return requested()
 
 
 def apprun():
