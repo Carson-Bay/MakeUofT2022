@@ -1,6 +1,7 @@
 <html>
 <head>
 <link rel="stylesheet" href='static/style.css' />
+<meta http-equiv="refresh" content="15">
 </head>
 <body>
 <h1>Drinkmaster</h1>
@@ -8,8 +9,8 @@
 {% for key,val in result %}
 <p>Pump {{key}} : {{val}}</p>
 {% endfor %}
-<input type="text" name="name_input" placeholder="Your Name">
-<input type="submit" name="submit" value="Submit">
+<!-- <input type="text" name="name_input" placeholder="Your Name">
+<input type="submit" name="submit" value="Submit"> -->
 
 <form action="{{ url_for('handle_data') }}" method="post">
     <input type="text" name="requester">
