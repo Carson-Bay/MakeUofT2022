@@ -43,7 +43,6 @@ class Pump:
     self.liquid_level = 100
 
   def toggle(self):
-    time.sleep(0.01)
     if GPIO.input(self.button_gpio) == 1:
       print("Rising")
       # only change last_on if the pump wasn't already on
@@ -51,7 +50,7 @@ class Pump:
         self.last_on = time.perf_counter()
         self.is_on = True
         # set GPIO stuff
-        GPIO.output(self.pump_gpio,GPIO.HIGH)
+        GPIO.output(self.pump_gpio,GPIO.LOW)
       else:
         print("Pump GPIO",self.pump_gpio, "turn_on called with pump already on.")
 
@@ -62,7 +61,7 @@ class Pump:
         self.last_off = time.perf_counter()
         self.is_on = False
         # set GPIO stuff
-        GPIO.output(self.pump_gpio,GPIO.LOW)
+        GPIO.output(self.pump_gpio,GPIO.HIGH)
         # when the pump is turned off, update the time_on
         self.time_on += (self.last_off - self.last_on)
       else:

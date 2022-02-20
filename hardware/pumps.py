@@ -13,6 +13,8 @@ class Pumps:
     }
 
   def toggle_pumps (self, channel):
+    time.sleep(0.01)
+    
     other_pump_on = False
     
     pump_index = self.pump_my_dict[str(channel)]
