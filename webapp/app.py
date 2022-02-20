@@ -31,7 +31,7 @@ def index():
       # never have an empty queue; if no new data has come in, then repeat old data 
       if liquid_levels.empty():
         liquid_levels.put(result)
-    return render_template('index2.html',result=result)
+    return render_template('index.html',result=result)
 
 @app.route('/requested')
 def requested():
