@@ -1,34 +1,43 @@
 <html>
+
 <head>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<!-- <link rel="stylesheet" href='static/style.css' /> -->
-<meta http-equiv="refresh" content="15">
-<title>The DrinkMaster</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	 crossorigin="anonymous">
+	<!-- <link rel="stylesheet" href='static/style.css' /> -->
+	<meta http-equiv="refresh" content="15">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>The DrinkMaster</title>
 </head>
+
 <body class="text-center px-4 sticky" style="overflow-y: hidden">
-    
-    
-<div class="container-fluid px-4">
-    <form class="form-signin" action="{{ url_for('handle_data') }}"  method="post">
-<!--  <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
-  <h1 class="h1 mb-4 mt-5 text-white font-weight-bold">The Drinkmaster</h1>
-    <h3 class="mb-4 text-white">Liquid Levels</h3>    
-       {% for key,val in result %}
-<!-- <p>Pump {{key}} : {{val}}</p> -->
-        <div class="row my-3">
-            <div class="col-10">
-                <div class="progress" >
-                 <div class="progress-bar " role="progressbar" style="width: 75%">
- </div>
-            </div>
-            </div>
-            <div class="col-2 ">
-                <button type="button" name="reset-button" class=" btn btn-light ">Reset</button>
+	<div class="container-fluid px-4">
+		<form class="form-signin" action="{{ url_for('reset_button') }}"  method="post">
+			<!--  <img class="mb-4" src="/docs/4.3/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">-->
+			<h1 class="h1 mb-4 mt-5 text-white font-weight-bold">The Drinkmaster</h1>
+			<h3 class="mb-4 text-white">Liquid Levels</h3>
+			{% for key,val in result %}
+			<!-- <p>Pump {{key}} : {{val}}</p> -->
+			<div class="row my-3">
+        <div class="col-1">
+          <h6 class="align-middle text-white font-italic" style="margin:0;">{{key}}</h6>
+          </div>
+				<div class="col-9">
+					<div class="progress">
+						<div class="progress-bar " role="progressbar" style="width: 75%">
+						</div>
+					</div>
+				</div>
+				<div class="col-2 ">
+					<button type="submit" name="reset-button" class=" btn btn-light " value="{{  key }}">Reset</button>
+
                 </div>
         </div>
 
 {% endfor %}
+</form>
   <!-- <div class="progress-bar" role="progressbar" style="width: {{50}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div> -->
+  <form action="{{ url_for('handle_data') }}"  method="post">
   <h5 class="mt-3 text-center mb-2 text-white">Request a Drink</h5>
   <label for="inputEmail" class="sr-only">Email address</label>
   <input type="text" id="inputEmail" name="requester" class="form-control mb-2" placeholder="Name" required="" autofocus="">
@@ -95,7 +104,7 @@ body{
   position:absolute;
   width:100%;
   height: 100%;
-  z-index:0;
+  z-index:-1;
   overflow:hidden;
   top:0;
   left:0;

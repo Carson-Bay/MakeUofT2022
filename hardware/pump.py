@@ -52,7 +52,7 @@ class Pump:
         # set GPIO stuff
         GPIO.output(self.pump_gpio,GPIO.LOW)
       else:
-        p
+        print("Pump GPIO",self.pump_gpio, "turn_on called with pump already on.")
 
     else:
       print("Falling")
@@ -110,4 +110,8 @@ class Pump:
   def get_liquid_usage(self):
     return self.get_time_on*MILLIS_TO_LIQUID
 
+  def reset(self):
+    self.time_on = 0
+    self.liquid_level = 100
+    print("PUMP GPIO", self.pump_gpio, "RESET")
     

@@ -33,13 +33,21 @@ def index():
         liquid_levels.put(result)
     return render_template('index2.html',result=result)
 
-
 @app.route('/handle_data', methods=['POST'])
 def handle_data():
     name = request.form['requester']
+    print(request.form)
     print(name, "received")
     drink_requests.put(name)
     return index()
+
+@app.route('/reset_button', methods=['POST'])
+def reset_button():
+    pump_to_reset = request.form['reset-button']
+    to_reset.put(pump_to_reset)
+    print("RESET BUTTON", pump_to_reset)
+    return index()
+
 
 def apprun():
   app.run(debug=True, host='0.0.0.0')
