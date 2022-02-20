@@ -66,6 +66,28 @@ class Pump:
         self.time_on += (self.last_off - self.last_on)
       else:
         print("Pump GPIO",self.pump_gpio, "turn_off called with pump already off.")
+
+  def turn_on(self):
+     # only change last_on if the pump wasn't already on
+    if not self.is_on:
+      self.last_on = time.perf_counter()
+      self.is_on = True
+      # set GPIO stuff
+      GPIO.output(self.pump_gpio,GPIO.LOW)
+    else:
+      print("Pump GPIO",self.pump_gpio, "turn_on called with pump already on.")
+  
+  def turn_off(self):
+    # only change last_off if the pump wasn't already on
+    if self.is_on:
+      self.last_off = time.perf_counter()
+      self.is_on = False
+      # set GPIO stuff
+      GPIO.output(self.pump_gpio,GPIO.HIGH)
+      # when the pump is turned off, update the time_on
+      self.time_on += (self.last_off - self.last_on)
+    else:
+      print("Pump GPIO",self.pump_gpio, "turn_off called with pump already off.")
   
   def get_time_on(self):
     if self.is_on:
