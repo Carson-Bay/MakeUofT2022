@@ -34,14 +34,14 @@ class Pumps:
 
     is_pump_already_on = False
     
-    for i in range(len(self.pump_list)):
-      if GPIO.input(self.pump_list[i].button_gpio) == 0 and self.pump_list[i].is_on:
-        self.pump_list[i].toggle()
+    for i in self.pump_list):
+      if GPIO.input(i.button_gpio) == 0 and i.is_on:
+        i.toggle()
 
-      if is_pump_already_on and self.pump_list[i].is_on:
-        self.pump_list[i].toggle()
+      if is_pump_already_on and i.is_on:
+        i.toggle()
 
-      elif self.pump_list[i].is_on:
+      elif i.is_on:
         is_pump_already_on = True
 
 

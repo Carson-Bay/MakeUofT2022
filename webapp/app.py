@@ -25,7 +25,7 @@ def index():
     to_reset.put(["Carson"])
     result = []
     if liquid_levels.empty():
-      result = [(1,0),(2,0),(3,0),(4,0)]
+      result = [(1,75),(2,75),(3,75),(4,75)]
     else:
       for ind,num in enumerate(liquid_levels.get()):
        result.append((ind+1,num))
