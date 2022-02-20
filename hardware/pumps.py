@@ -13,7 +13,7 @@ class Pumps:
     }
 
   def toggle_pumps (self, channel):
-    time.sleep(0.01)
+    time.sleep(0.001)
     
     other_pump_on = False
     
