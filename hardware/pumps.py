@@ -30,7 +30,7 @@ class Pumps:
     if not other_pump_on:
       self.pump_list[pump_index].toggle()
 
-  def update():
+  def update(self):
 
     is_pump_already_on = False
     
