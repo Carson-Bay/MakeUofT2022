@@ -16,7 +16,7 @@ currentdir = os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentfram
 parentdir = os.path.dirname(currentdir)
 sys.path.insert(0, parentdir) 
 
-import main
+# import main
 
 app = Flask(__name__)
 
@@ -32,7 +32,7 @@ def index():
       # never have an empty queue; if no new data has come in, then repeat old data 
       if liquid_levels.empty():
         liquid_levels.put(result)
-    return render_template('index.html',result=result)
+    return render_template('index2.html',result=result)
 
 
 @app.route('/handle_data', methods=['POST'])
@@ -50,8 +50,8 @@ if __name__ == '__main__':
     webapp = Process(target=apprun)
     webapp.start()
 
-    hardware = Process(target=main, args=(liquid_levels,to_reset,drink_requests))
-    hardware.start()
+    # hardware = Process(target=main, args=(liquid_levels,to_reset,drink_requests))
+    # hardware.start()
     
     # while True:
     #   print("HeLLO!!!!!")
