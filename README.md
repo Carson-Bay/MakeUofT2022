@@ -1,5 +1,3 @@
 # MakeUofT2022
 
-test commit
-
-test commit from keyon
+Please visit our project on DevPost: https://devpost.com/software/drinkmaster
